@@ -1,5 +1,5 @@
 
-name: development-v2
+name: test
 on:
    workflow_dispatch:    
         inputs:
