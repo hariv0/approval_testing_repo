@@ -18,3 +18,4 @@ jobs:
         - name: Echo env
           run: |
               echo ${{ github.event.inputs.environment }}
+              echo ${{ secrets.ONE }}
