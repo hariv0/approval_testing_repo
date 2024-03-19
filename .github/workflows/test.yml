@@ -38,4 +38,14 @@ jobs:
        with:
          environment: ${{ github.event.inputs.environment }}
        secrets: inherit
+
+   deploy_caller_3:    
+     runs-on: ubuntu-latest
+     environment: ${{ github.event.inputs.environment }}
+
+     steps:
+        - name: Echo env
+          run: |
+              echo ${{ github.event.inputs.environment }}
+              echo ${{ secrets.ONE }}
        
