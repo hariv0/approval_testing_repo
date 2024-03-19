@@ -12,7 +12,7 @@ on:
                     - 'Features'
                     - 'Development'
             caller_1:
-                description: 'Deploy Webapp'
+                description: 'Deploy Caller 1'
                 required: true
                 default: 'true'
                 type: choice
@@ -26,14 +26,14 @@ permissions:
   packages: write
 
 jobs:
-   deploy_webapp:
-       if: ${{ github.event.inputs.webapp == 'true' }}
+   deploy_caller_1:
+       if: ${{ github.event.inputs.caller_1 == 'true' }}
        uses: ./.github/workflows/caller_1.yml
        with:
          environment: ${{ github.event.inputs.environment }}
        secrets: inherit
     
-   deploy_reactapp:
+   deploy_caller_2:
        uses: ./.github/workflows/caller_2.yml
        with:
          environment: ${{ github.event.inputs.environment }}
