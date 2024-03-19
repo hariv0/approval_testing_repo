@@ -1,0 +1,20 @@
+
+name: caller_1
+on:
+    workflow_call:
+        inputs:
+            environment:
+               description: 'Environment to run the workflow on'
+               required: true
+               type: string
+
+jobs:
+    caller_1:    
+     runs-on: ubuntu-latest
+     environment: ${{ github.event.inputs.environment }}
+
+     steps:
+
+        - name: Echo env
+          run: |
+              echo ${{ github.event.inputs.environment }}

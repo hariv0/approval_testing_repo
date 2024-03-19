@@ -1,1 +1,41 @@
 
+name: development-v2
+on:
+   workflow_dispatch:    
+        inputs:
+            environment:
+               description: 'Environment to run the workflow on'
+               required: true
+               default: 'Features'
+               type: choice
+               options:
+                    - 'Features'
+                    - 'Development'
+            caller_1:
+                description: 'Deploy Webapp'
+                required: true
+                default: 'true'
+                type: choice
+                options:
+                    - 'true'
+                    - 'false'
+
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+   deploy_webapp:
+       if: ${{ github.event.inputs.webapp == 'true' }}
+       uses: ./.github/workflows/caller_1.yml
+       with:
+         environment: ${{ github.event.inputs.environment }}
+       secrets: inherit
+    
+   deploy_reactapp:
+       uses: ./.github/workflows/caller_2.yml
+       with:
+         environment: ${{ github.event.inputs.environment }}
+       secrets: inherit
+       
