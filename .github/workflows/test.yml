@@ -28,11 +28,16 @@ permissions:
 jobs:
    main_job:
     runs-on: ubuntu-latest
-    environment: ${{ github.event.inputs.environment }}
+    environment: Approval 
     steps:
-        - name: Run command with sudo
-          run: |
-            sudo apt update
+      - uses: trstringer/manual-approval@v1
+        with:
+          secret: ${{ github.TOKEN }}
+          approvers: hariv0
+          minimum-approvals: 1
+          issue-title: "Deploying Test"
+          issue-body: "Please approve or deny the deployment o"
+          exclude-workflow-initiator-as-approver: false
 
    deploy_caller_1:
        if: ${{ github.event.inputs.caller_1 == 'true' }}
