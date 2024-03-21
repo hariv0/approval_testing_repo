@@ -32,7 +32,7 @@ jobs:
     steps:
         - name: Run command with sudo
           run: |
-            sudo apt update
+            apt update
 
 
    deploy_caller_1:
