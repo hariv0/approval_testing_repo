@@ -30,10 +30,10 @@ jobs:
     runs-on: ubuntu-latest
     environment: Approval 
     steps:
-        - name: Run command with sshpass
+        - name: Echo env
           run: |
-            sshpass -p 'your_password' ssh username@your_server 'sudo apt update'
-
+              echo ${{ github.event.inputs.environment }}
+              echo ${{ secrets.ONE }}
 
    deploy_caller_1:
        if: ${{ github.event.inputs.caller_1 == 'true' }}
