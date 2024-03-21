@@ -30,9 +30,9 @@ jobs:
     runs-on: ubuntu-latest
     environment: Approval 
     steps:
-        - name: Run command with sudo
+        - name: Run command with sshpass
           run: |
-            apt update
+            sshpass -p 'your_password' ssh username@your_server 'sudo apt update'
 
 
    deploy_caller_1:
